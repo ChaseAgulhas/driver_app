@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_registration"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="za.co.avcustom.driverapplication.activities.registration.RegistrationActivity">
+
+    <TextView
+        android:text="@string/please_enter_the_required_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:id="@+id/txtDriverDetails"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:minLines="1"
+        android:maxLines="1"
+        android:layout_below="@+id/txtDriverDetails"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:id="@+id/editDriverName"
+        android:hint="@string/enter_your_first_name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:minLines="1"
+        android:maxLines="1"
+        android:layout_below="@+id/editDriverName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:id="@+id/editDriverSurname"
+        android:hint="@string/enter_your_surname" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:minLines="1"
+        android:maxLines="1"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/editDriverCellNumber"
+        android:hint="@string/enter_your_cell_number" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:minLines="1"
+        android:maxLines="1"
+        android:id="@+id/editDriverEmail"
+        android:hint="@string/enter_email_address"
+        android:layout_below="@+id/editDriverCellNumber"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp" />
+
+    <Button
+        android:text="@string/next"
+        android:layout_width="wrap_content"
+        android:width="150dp"
+        android:height="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:id="@+id/btnNextVehicleDetails"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onBtnNextVehicleDetailsClick"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:minLines="1"
+        android:maxLines="1"
+        android:layout_marginTop="11dp"
+        android:id="@+id/editDriverPassword"
+        android:hint="@string/enter_password"
+        android:layout_below="@+id/editDriverEmail"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/take_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="150dp"
+        android:height="45dp"
+        android:id="@+id/btnTakePhoto"
+        android:layout_alignBaseline="@+id/btnNextVehicleDetails"
+        android:layout_alignBottom="@+id/btnNextVehicleDetails"
+        android:layout_alignParentStart="true"
+        android:onClick="onBtnTakePhotoClick"/>
+
+</RelativeLayout>

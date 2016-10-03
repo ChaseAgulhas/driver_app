@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Driver Application</string>
+    <string name="enter_email_address">Enter email address</string>
+    <string name="enter_password">Enter password</string>
+    <string name="login">Login</string>
+    <string name="not_a_member_click_below_to_sign_uo">Not a member? Click below to sign uo</string>
+    <string name="register">Register</string>
+    <string name="please_enter_the_required_details">Please enter the required details</string>
+    <string name="enter_your_first_name">Enter your first name</string>
+    <string name="enter_your_surname">Enter your surname</string>
+    <string name="enter_your_cell_number">Enter your cell number</string>
+    <string name="next">Next</string>
+    <string name="clear">Clear</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_vehicle_registration">Enter vehicle registration</string>
+    <string name="enter_vehicle_year">Enter vehicle year</string>
+    <string name="enter_vehicle_model">Enter vehicle model</string>
+    <string name="enter_vehicle_make">Enter Vehicle make</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="show_map">Show Map</string>
+    <string name="view_deliveries">View Deliveries</string>
+    <string name="all_deliveries_to_be_made">All deliveries to be Made</string>
+    <string name="deliveries_here">Deliveries Here</string>
+    <string name="back_to_menu">Back to Menu</string>
+    <string name="logout">Logout</string>
+    <string name="select_an_option">Select an option</string>
+    <string name="remember_me">Remember Me</string>
+</resources>
