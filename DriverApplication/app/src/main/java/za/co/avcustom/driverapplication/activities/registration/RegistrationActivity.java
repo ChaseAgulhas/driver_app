@@ -6,11 +6,19 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 import java.io.ByteArrayOutputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import za.co.avcustom.driverapplication.R;
 import za.co.avcustom.driverapplication.domain.driver.Driver;
@@ -69,7 +77,21 @@ public class RegistrationActivity extends AppCompatActivity {
         txtPassword = (EditText)findViewById(R.id.editDriverPassword);
     }
 
-    private class RegisterDriver extends AsyncTask<Void,Void,Void>
+    private boolean validateEmailAddress(String email)
+    {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public Boolean validatePassword(String password){
+        String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+
+        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher = pattern.matcher(password);
+
+        return matcher.matches();
+    }
+
+    private class RegisterDriver extends AsyncTask<Void,Void,Driver>
     {
         Driver driver = new Driver();
         @Override
@@ -83,16 +105,27 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
-            return null;
+        protected Driver doInBackground(Void... params) {
+            try{
+                final String url = "http://0.0.0.0:8080/api/drivers";
+                RestTemplate restTemplate = new RestTemplate();
 
-            /**
-             * TODO Add code to insert driver into database
-             */
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                HttpEntity<Driver> request = new HttpEntity<>(driver);
+
+                return restTemplate.postForObject(url, request, Driver.class);
+            }
+            catch (HttpClientErrorException registrationError){
+                System.out.println("SEND/RECEIVE ERROR: " + registrationError);
+            }
+            catch(Exception e){
+                System.out.println("OTHER ERROR: " + e);
+            }
+            return driver;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(Driver driver) {
             Intent intent = new Intent(getApplicationContext(),VehicleRegistrationActivity.class);
             intent.putExtra("DriverName",driver.getName() + " " + driver.getSurname());
             startActivity(intent);
