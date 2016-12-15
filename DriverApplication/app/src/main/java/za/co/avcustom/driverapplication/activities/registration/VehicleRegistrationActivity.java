@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 import za.co.avcustom.driverapplication.R;
 import za.co.avcustom.driverapplication.activities.login.LoginActivity;
 import za.co.avcustom.driverapplication.domain.vehicle.Vehicle;
@@ -48,7 +53,7 @@ public class VehicleRegistrationActivity extends AppCompatActivity {
         txtVehicleRegistration = (EditText)findViewById(R.id.editVehicleRegistration);
     }
 
-    private class RegisterVehicle extends AsyncTask<Void,Void,Void>
+    private class RegisterVehicle extends AsyncTask<Void,Void,Vehicle>
     {
         Vehicle vehicle = new Vehicle();
         @Override
@@ -61,15 +66,29 @@ public class VehicleRegistrationActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
-            /**
-             * TODO Add code to insert driver into database
-             */
-            return null;
+        protected Vehicle doInBackground(Void... params) {
+            try{
+                final String url = "http://0.0.0.0:8080/api/vehicles";
+                RestTemplate restTemplate = new RestTemplate();
+
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+                HttpEntity<Vehicle> request = new HttpEntity<>(vehicle);
+
+                return restTemplate.postForObject(url, request, Vehicle.class);
+            }
+            catch (HttpClientErrorException vehicleRegistrationError){
+                System.out.println("SEND OR RECEIVE ERROR: " + vehicleRegistrationError);
+            }
+            catch(Exception e){
+                System.out.println("OTHER ERROR: " + e);
+            }
+
+            return vehicle;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(Vehicle vehicle) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         }
