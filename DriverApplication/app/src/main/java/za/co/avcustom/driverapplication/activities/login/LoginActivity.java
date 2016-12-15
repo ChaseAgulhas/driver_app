@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println("ERROR: " + e);
             }
             userLoggedIn[0] = login;
+            userLoggedIn[0].setId(Long.valueOf("1000"));
             return userLoggedIn;
         }
     }

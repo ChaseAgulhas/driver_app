@@ -19,6 +19,7 @@ public class Login implements Serializable, ILogin {
         this.password = builder.password;
     }
     public Long getId(){return id;}
+    public void setId(Long parameterId){id = parameterId;}
     public String getUsername(){return username;}
     public String getPassword(){return password;}
 
