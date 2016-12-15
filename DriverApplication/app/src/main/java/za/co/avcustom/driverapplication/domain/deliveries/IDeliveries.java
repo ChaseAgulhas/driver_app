@@ -8,7 +8,7 @@ package za.co.avcustom.driverapplication.domain.deliveries;
  * Description:
  */
 
-public interface Deliveries
+public interface IDeliveries
 {
     double calculateTotalCost(double totalDistance);
 }

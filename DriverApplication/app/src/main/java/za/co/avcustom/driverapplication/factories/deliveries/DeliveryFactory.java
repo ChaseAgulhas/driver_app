@@ -12,7 +12,7 @@ import za.co.avcustom.driverapplication.domain.deliveries.impl.DeliveriesImpl;
 
 public class DeliveryFactory
 {
-    public static DeliveriesImpl getDelivery(String[] destinations, String[] descriptions,String[] dueDates, String[] recipients ,double totalDistance)
+    public static DeliveriesImpl getDelivery(String[] destinations, String[] descriptions, String[] dueDates, String[] recipients , double totalDistance)
     {
         DeliveriesImpl deliveries = new DeliveriesImpl.Builder()
                 .destinations(destinations)

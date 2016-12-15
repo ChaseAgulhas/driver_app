@@ -2,7 +2,7 @@ package za.co.avcustom.driverapplication.domain.deliveries.impl;
 
 import java.io.Serializable;
 
-import za.co.avcustom.driverapplication.domain.deliveries.Deliveries;
+import za.co.avcustom.driverapplication.domain.deliveries.IDeliveries;
 
 /**
  * Author: MI Lagardien
@@ -11,7 +11,7 @@ import za.co.avcustom.driverapplication.domain.deliveries.Deliveries;
  * Lecturer: Dr B. Kabaso
  * Description:
  */
-public class DeliveriesImpl implements Deliveries, Serializable {
+public class DeliveriesImpl implements IDeliveries, Serializable {
 
     private long id;
     private String[] destinations;
